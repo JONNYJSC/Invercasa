@@ -8,6 +8,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<ICalcularVacaciones, CalcularVacaciones>();
 builder.Services.AddSingleton<ICrearEmpleado, CrearEmpleado>();
 builder.Services.AddSingleton<IMostrarEmpleado, MostrarEmpleado>();
+builder.Services.AddSingleton<IRegistrarVacaciones, RegistrarVacaciones>();
 
 var app = builder.Build();
 
