@@ -8,6 +8,6 @@ namespace Invercasa.Servicios.CasoUso
 {
     public interface ICalcularVacaciones
     {
-        decimal Calcular(DateTime FechaInicio, DateTime FechaFin);
+        decimal Calcular(DateTime fechaInicio, DateTime fechaFin);
     }
 }
