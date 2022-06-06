@@ -9,6 +9,6 @@ namespace Invercasa.Servicios.CasoUso
 {
     public interface ICrearEmpleado
     {
-        bool Registrar(Empleado empleado);
+        void Registrar(Empleado empleado);
     }
 }

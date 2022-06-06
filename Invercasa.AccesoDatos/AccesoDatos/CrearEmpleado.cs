@@ -13,10 +13,10 @@ namespace Invercasa.AccesoDatos.AccesoDatos
 {
     public class CrearEmpleado : ICrearEmpleado
     {
-        private readonly AdministradorConexiones conexion = new();
-        private readonly SqlCommand comando = new();
+        private readonly AdministradorConexiones conexion = new AdministradorConexiones();
+        private readonly SqlCommand comando = new SqlCommand();
 
-        public bool Registrar(Empleado empleado)
+        public void Registrar(Empleado empleado)
         {
             string query = @"dbo.SP_INS_Empleado";
 
@@ -66,10 +66,8 @@ namespace Invercasa.AccesoDatos.AccesoDatos
             comando.Parameters.AddRange(parameters.ToArray());
             comando.CommandType = CommandType.StoredProcedure;
 
-            var result = comando.ExecuteNonQuery();
+            comando.ExecuteNonQuery();
             conexion.CerrarConexion();
-
-            return false;
         }
     }
 }
