@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Invercasa.AccesoDatos.Configuraciones;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -10,7 +11,14 @@ namespace Invercasa.AccesoDatos.Conexion
 {
     public class AdministradorConexiones
     {
-        private readonly SqlConnection Conexion = new("Server=DESKTOP-P24U9SO; Initial Catalog=dbInvercasa; User ID=sa; Password=admin123; Trusted_Connection=false");
+        private readonly SqlConnection Conexion;
+        private readonly BaseDatosConfiguracion _baseDatosConfiguracion;
+
+        public AdministradorConexiones(BaseDatosConfiguracion baseDatosConfiguracion)
+        {
+            _baseDatosConfiguracion = baseDatosConfiguracion;
+            Conexion = new SqlConnection(_baseDatosConfiguracion.CadenaConexion);
+        }
 
         public SqlConnection AbrirConexion()
         {

@@ -13,8 +13,13 @@ namespace Invercasa.AccesoDatos.AccesoDatos
 {
     public class MostrarEmpleado : IMostrarEmpleado
     {
-        private readonly AdministradorConexiones conexion = new AdministradorConexiones();
+        private readonly AdministradorConexiones conexion;
         private readonly SqlCommand comando = new SqlCommand();
+
+        public MostrarEmpleado(AdministradorConexiones conexion)
+        {
+            this.conexion = conexion;
+        }
 
         public List<Empleado> Mostrar()
         {

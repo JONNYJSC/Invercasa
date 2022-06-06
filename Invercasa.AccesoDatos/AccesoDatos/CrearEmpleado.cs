@@ -13,8 +13,13 @@ namespace Invercasa.AccesoDatos.AccesoDatos
 {
     public class CrearEmpleado : ICrearEmpleado
     {
-        private readonly AdministradorConexiones conexion = new AdministradorConexiones();
+        private readonly AdministradorConexiones conexion;
         private readonly SqlCommand comando = new SqlCommand();
+
+        public CrearEmpleado(AdministradorConexiones conexion)
+        {
+            this.conexion = conexion;
+        }
 
         public void Registrar(Empleado empleado)
         {
@@ -58,7 +63,6 @@ namespace Invercasa.AccesoDatos.AccesoDatos
                     SqlDbType = SqlDbType.VarChar,
                     Value = empleado.Direccion
                 },
-
             };
 
             comando.Connection = conexion.AbrirConexion();

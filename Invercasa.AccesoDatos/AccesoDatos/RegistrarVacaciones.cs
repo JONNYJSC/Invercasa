@@ -13,8 +13,14 @@ namespace Invercasa.AccesoDatos.AccesoDatos
 {
     public class RegistrarVacaciones : IRegistrarVacaciones
     {
-        private readonly AdministradorConexiones conexion = new AdministradorConexiones();
+        private readonly AdministradorConexiones conexion;
         private readonly SqlCommand comando = new SqlCommand();
+
+        public RegistrarVacaciones(AdministradorConexiones conexion)
+        {
+            this.conexion = conexion;
+        }
+
         public bool Registrar(int id, DateTime fechaInicio, DateTime fechaFin)
         {
 

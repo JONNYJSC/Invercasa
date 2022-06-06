@@ -12,8 +12,14 @@ namespace Invercasa.AccesoDatos.AccesoDatos
 {
     public class CalcularVacaciones : ICalcularVacaciones
     {
-        private readonly AdministradorConexiones conexion = new AdministradorConexiones();
+        private readonly AdministradorConexiones conexion;
         private readonly SqlCommand comando = new SqlCommand();
+
+        public CalcularVacaciones(AdministradorConexiones conexion)
+        {
+            this.conexion = conexion;
+        }
+
         public decimal Calcular(DateTime fechaInicio, DateTime fechaFin)
         {
             string query = "SELECT [dbo].FnCalcularVacaciones(@fechaInicial, @fechaFinal);";
