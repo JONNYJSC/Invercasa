@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Invercasa.Dominio.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace Invercasa.Servicios.CasoUso
 {
     public interface IRegistrarVacaciones
     {
-        bool Registrar(int id, DateTime FechaInicio, DateTime FechaFin);
+        bool Registrar(int id, DateTime fechaInicio, DateTime fechaFin);
     }
 }
