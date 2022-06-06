@@ -8,18 +8,12 @@ namespace Invercasa.Dominio.Entidades
 {
     public class Empleado
     {
-        public Empleado(string nombre, string tipoIdentificacion, string numeroIdentificacion)
-        {
-            Nombre = nombre;
-            TipoIdentificacion = tipoIdentificacion;
-            NumeroIdentificacion = numeroIdentificacion;
-        }
-
         public int Id { get; set; }
-        public string Nombre { get; set; }
-        public string TipoIdentificacion { get; set; }
-        public string NumeroIdentificacion { get; set; }
+        public string Nombre { get; set; } = null!;
+        public string TipoIdentificacion { get; set; } = null!;
+        public string NumeroIdentificacion { get; set; } = null!;
         public DateTime FechaIngreso { get; set; }
         public decimal SalarioBaseMensual { get; set; }
+        public string Direccion { get; set; } = null!;
     }
 }
