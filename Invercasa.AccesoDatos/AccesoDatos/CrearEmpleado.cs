@@ -63,6 +63,7 @@ namespace Invercasa.AccesoDatos.AccesoDatos
 
             comando.Connection = conexion.AbrirConexion();
             comando.CommandText = query;
+            comando.Parameters.Clear();
             comando.Parameters.AddRange(parameters.ToArray());
             comando.CommandType = CommandType.StoredProcedure;
 

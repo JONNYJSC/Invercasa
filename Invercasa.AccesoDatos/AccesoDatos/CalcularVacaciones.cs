@@ -16,7 +16,7 @@ namespace Invercasa.AccesoDatos.AccesoDatos
         private readonly SqlCommand comando = new SqlCommand();
         public decimal Calcular(DateTime fechaInicio, DateTime fechaFin)
         {
-            string query = "SELECT [dbo].FnCalcularVacaciones(@fechaInicial, @fechaFinal) AS Total;";
+            string query = "SELECT [dbo].FnCalcularVacaciones(@fechaInicial, @fechaFinal);";
 
             var parameters = new List<SqlParameter>()
             {
@@ -36,6 +36,7 @@ namespace Invercasa.AccesoDatos.AccesoDatos
 
             comando.Connection = conexion.AbrirConexion();
             comando.CommandText = query;
+            comando.Parameters.Clear();
             comando.Parameters.AddRange(parameters.ToArray());
 
             decimal functionResult = (decimal)comando.ExecuteScalar();
