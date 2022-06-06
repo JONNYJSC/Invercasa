@@ -13,36 +13,40 @@ namespace Invercasa.AccesoDatos.AccesoDatos
 {
     public class MostrarEmpleado : IMostrarEmpleado
     {
-        private readonly AdministradorConexiones conexion = new();
-        private readonly SqlCommand comando = new();
-        DataTable dt = new();
+        private readonly AdministradorConexiones conexion = new AdministradorConexiones();
+        private readonly SqlCommand comando = new SqlCommand();
 
         public List<Empleado> Mostrar()
         {
-            List<Empleado> lst = new();
+            List<Empleado> empleados = new List<Empleado>();
+
             string query = "dbo.SP_SEL_Empleado";
 
             comando.Connection = conexion.AbrirConexion();
             comando.CommandText = query;
             comando.CommandType = CommandType.StoredProcedure;
 
-            SqlDataAdapter da = new(comando);
-            da.Fill(dt);
-            foreach (DataRow dr in dt.Rows)
-            {
-                Empleado emp = new();
-                emp.Id = Convert.ToInt32(dr["IdEmpleado"]);
-                emp.Nombre = Convert.ToString(dr["Nombre"])!;
-                emp.TipoIdentificacion = Convert.ToString(dr["TipoIdentificacion"])!;
-                emp.NumeroIdentificacion = Convert.ToString(dr["NumeroIdentificacion"])!;
-                emp.FechaIngreso = Convert.ToDateTime(dr["FechaIngreso"]);
-                emp.Direccion = Convert.ToString(dr["Direccion"])!;
-                lst.Add(emp);
-            }
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(comando);
+            DataTable dataTable = new DataTable();
+            dataAdapter.Fill(dataTable);
 
             conexion.CerrarConexion();
 
-            return lst;
+            Empleado empleado;
+            foreach (DataRow row in dataTable.Rows)
+            {
+                empleado = new Empleado();
+                empleado.Id = Convert.ToInt32(row["IdEmpleado"]);
+                empleado.Nombre = Convert.ToString(row["Nombre"])!;
+                empleado.TipoIdentificacion = Convert.ToString(row["TipoIdentificacion"])!;
+                empleado.NumeroIdentificacion = Convert.ToString(row["NumeroIdentificacion"])!;
+                empleado.FechaIngreso = Convert.ToDateTime(row["FechaIngreso"]);
+                empleado.SalarioBaseMensual = Convert.ToInt32(row["SalarioBaseMensual"]);
+                empleado.Direccion = Convert.ToString(row["Direccion"])!;
+                empleados.Add(empleado);
+            }
+
+            return empleados;
         }
     }
 }
