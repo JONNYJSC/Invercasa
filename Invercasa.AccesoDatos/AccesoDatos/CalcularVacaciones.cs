@@ -32,7 +32,6 @@ namespace Invercasa.AccesoDatos.AccesoDatos
                     SqlDbType = SqlDbType.Date,
                     Value = fechaFin
                 },
-
             };
 
             comando.Connection = conexion.AbrirConexion();
