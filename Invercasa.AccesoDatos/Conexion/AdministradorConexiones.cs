@@ -10,7 +10,7 @@ namespace Invercasa.AccesoDatos.Conexion
 {
     public class AdministradorConexiones
     {
-        private readonly SqlConnection Conexion = new SqlConnection("Server=DESKTOP-P24U9SO; Initial Catalog=dbInvercasa; User ID=sa; Password=admin123; Trusted_Connection=false");
+        private readonly SqlConnection Conexion = new("Server=DESKTOP-P24U9SO; Initial Catalog=dbInvercasa; User ID=sa; Password=admin123; Trusted_Connection=false");
 
         public SqlConnection AbrirConexion()
         {
