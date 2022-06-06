@@ -1,0 +1,51 @@
+﻿@model Invercasa.Dominio.Entidades.Vacaciones
+
+@{
+    ViewData["Title"] = "RegistrarVacaciones";
+}
+
+<link href=~/css/CalendarioVacaciones.css rel="stylesheet" type="text/css" />
+
+<h4>Registrar Vacaciones</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4 centrar">
+        <form asp-action="RegistrarVacaciones">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="IdEmpleado" />
+
+            <div class="form-group">
+                <label asp-for="FechaInicio" class="control-label"></label>
+                <input asp-for="FechaInicio" class="form-control" />
+                <span asp-validation-for="FechaInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaFin" class="control-label"></label>
+                <input asp-for="FechaFin" class="form-control" />
+                <span asp-validation-for="FechaFin" class="text-danger"></span>
+            </div>
+
+            <hr />
+            <br />
+
+            <div class="form-group d-flex justify-content-center">
+                <input type="submit" value="Registrar" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<br />
+<br />
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

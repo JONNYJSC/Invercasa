@@ -1,0 +1,58 @@
+﻿@*@model IEnumerable<Invercasa.Servicios.Modelos.Reporte>*@
+@model Invercasa.Servicios.Modelos.Reporte
+
+@{
+    ViewData["Title"] = "Reportes";
+}
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdEmpleado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaIngreso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiasTomados)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiasGenerados)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Saldos)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>
+            @Html.DisplayFor(model => model.IdEmpleado)
+            </td>
+            <td>
+            @Html.DisplayFor(model => model.Nombre)
+            </td>
+            <td>
+            @Html.DisplayFor(model => model.FechaIngreso)
+            </td>
+            <td>
+            @Html.DisplayFor(model => model.DiasTomados)
+            </td>
+            <td>
+            @Html.DisplayFor(model => model.DiasGenerados)
+            </td>
+            <td>
+            @Html.DisplayFor(model => model.Saldos)
+            </td>
+    </tbody>
+</table>
+
+<br />
+<br />
+<div>
+    <a asp-action="Index" class="btn btn-primary">Volver a la lista</a>
+</div>
