@@ -13,42 +13,38 @@ namespace Invercasa.AccesoDatos.AccesoDatos
 {
     public class RegistrarVacaciones : IRegistrarVacaciones
     {
-        private readonly AdministradorConexiones conexion = new();
-        private readonly SqlCommand comando = new();
-        DataTable dt = new();
+        private readonly AdministradorConexiones conexion = new AdministradorConexiones();
+        private readonly SqlCommand comando = new SqlCommand();
         public bool Registrar(int id, DateTime fechaInicio, DateTime fechaFin)
         {
-            Vacaciones v = new();
-            v.IdEmpleado = id;
-            v.FechaInicio = fechaInicio;
-            v.FechaFin = fechaFin;
 
             string query = "dbo.SP_INS_Vacaciones";
 
             var parameters = new List<SqlParameter>()
-            {   
+            {
                 new SqlParameter()
                 {
                     ParameterName = "@IdEmplado",
                     SqlDbType = SqlDbType.Int,
-                    Value = v.IdEmpleado
+                    Value = id
                 },
                 new SqlParameter()
                 {
                     ParameterName = "@FechaInicio",
                     SqlDbType = SqlDbType.Date,
-                    Value = v.FechaInicio  
+                    Value = fechaInicio
                 },
                 new SqlParameter()
                 {
                     ParameterName = "@FechaFin",
                     SqlDbType = SqlDbType.Date,
-                    Value = v.FechaFin
+                    Value = fechaFin
                 },
             };
 
             comando.Connection = conexion.AbrirConexion();
             comando.CommandText = query;
+            comando.Parameters.Clear();
             comando.Parameters.AddRange(parameters.ToArray());
             comando.CommandType = CommandType.StoredProcedure;
 
@@ -56,35 +52,6 @@ namespace Invercasa.AccesoDatos.AccesoDatos
             conexion.CerrarConexion();
 
             return false;
-        }
-
-
-        public List<Empleado> GetAll()
-        {
-
-            conexion.AbrirConexion();
-
-            List<Empleado> lst = new();
-            string query = @"SELECT * FROM dbo.Empleado";
-
-            comando.Connection = conexion.AbrirConexion();
-            comando.CommandText = query;
-            //comando.CommandType = CommandType.StoredProcedure;
-
-            SqlDataAdapter da = new(comando);
-            da.Fill(dt);
-            foreach (DataRow dr in dt.Rows)
-            {
-                Empleado emp = new();
-                emp.Id = Convert.ToInt32(dr["IdEmpleado"]);
-                emp.Nombre = Convert.ToString(dr["Nombre"])!;
-                lst.Add(emp);
-            }
-
-            conexion.CerrarConexion();
-
-            return lst;
-
         }
     }
 }
