@@ -5,6 +5,7 @@ using Invercasa.Servicios.Modelos;
 using Invercasa.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Diagnostics;
 
 namespace Invercasa.Web.Controllers
 {
@@ -50,8 +51,17 @@ namespace Invercasa.Web.Controllers
         // POST: EmpleadoController/Create
         public ActionResult CrearEmpleado(Empleado empleado)
         {
+            empleado.ValidarNIdentidad = _crearEmpleado.ValidarCedula(empleado.NumeroIdentificacion);
+
             _crearEmpleado.Registrar(empleado);
-            return RedirectToAction(nameof(Index));
+
+            if (empleado.ValidarNIdentidad.Equals("No"))
+            {
+                ViewBag.Message = empleado.NumeroIdentificacion;
+                return View();
+            }
+            else
+                return RedirectToAction(nameof(Index));
         }
 
         public ActionResult Reporte(int id)
@@ -77,11 +87,25 @@ namespace Invercasa.Web.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult RegistrarVacaciones(int id, Vacaciones vacaciones)
         {
             var resut = _registrarVacaciones.Registrar(id, vacaciones.FechaInicio, vacaciones.FechaFin);
             return RedirectToAction(nameof(Index));
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public ActionResult Error(int statusCode)
+        {
+            if (statusCode == 404)
+            {
+                return View("NoEncontrado");
+            }
+            else
+            {
+                return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
         }
     }
 }
