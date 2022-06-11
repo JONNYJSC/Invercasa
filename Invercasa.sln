@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScriptBaseDatos", "ScriptBaseDatos", "{71F20799-09DD-402D-A3EF-A0F36864B6B8}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\InvercasaScript.sql = ..\..\InvercasaScript.sql
+		InvercasaScript.sql = InvercasaScript.sql
 	EndProjectSection
 EndProject
 Global
