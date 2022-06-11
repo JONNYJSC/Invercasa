@@ -104,6 +104,37 @@ BEGIN
 	RETURN @vacaciones;
 END;
 GO
+/****** Object:  UserDefinedFunction [dbo].[FnValidarCedula]    Script Date: 10/06/2022 10:35:31 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE FUNCTION [dbo].[FnValidarCedula]
+(
+    @NumeroIdentificacion VARCHAR(50)
+)
+RETURNS VARCHAR(50)
+AS
+BEGIN
+    DECLARE @Identidad VARCHAR(50);
+    SET @Identidad =
+    (
+        SELECT e.NumeroIdentificacion
+        FROM dbo.Empleado e
+        WHERE e.NumeroIdentificacion = @NumeroIdentificacion
+    );
+    IF NOT EXISTS
+    (
+        SELECT e.NumeroIdentificacion
+        FROM dbo.Empleado e
+        WHERE e.NumeroIdentificacion = @NumeroIdentificacion
+    )
+        SET @Identidad = 'Si';
+    ELSE
+        SET @Identidad = 'No';
+    RETURN @Identidad;
+END;
+GO
 /****** Object:  Table [dbo].[Empleado]    Script Date: 06/06/2022 01:07:49 a. m. ******/
 SET ANSI_NULLS ON
 GO
