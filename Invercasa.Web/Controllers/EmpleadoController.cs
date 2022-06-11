@@ -83,7 +83,7 @@ namespace Invercasa.Web.Controllers
             return View();
         }
 
-        public ActionResult RegistrarVacaciones(int id)
+        public ActionResult RegistrarVacaciones()
         {
             return View();
         }
