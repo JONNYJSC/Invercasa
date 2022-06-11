@@ -10,5 +10,6 @@ namespace Invercasa.Servicios.CasoUso
     public interface ICrearEmpleado
     {
         void Registrar(Empleado empleado);
+        string ValidarCedula(string numeroIdentificacion);
     }
 }
