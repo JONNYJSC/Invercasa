@@ -54,7 +54,7 @@ namespace Invercasa.AccesoDatos.AccesoDatos
             comando.Parameters.AddRange(parameters.ToArray());
             comando.CommandType = CommandType.StoredProcedure;
 
-            var result = comando.ExecuteNonQuery();
+            comando.ExecuteNonQuery();
             conexion.CerrarConexion();
 
             return false;

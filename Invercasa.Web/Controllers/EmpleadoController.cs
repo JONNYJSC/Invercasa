@@ -94,18 +94,5 @@ namespace Invercasa.Web.Controllers
             var resut = _registrarVacaciones.Registrar(id, vacaciones.FechaInicio, vacaciones.FechaFin);
             return RedirectToAction(nameof(Index));
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public ActionResult Error(int statusCode)
-        {
-            if (statusCode == 404)
-            {
-                return View("NoEncontrado");
-            }
-            else
-            {
-                return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-            }
-        }
     }
 }
