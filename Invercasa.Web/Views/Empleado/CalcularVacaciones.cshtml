@@ -52,8 +52,8 @@
 
 
 @section Scripts {
-    @{
-    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+@{
+await Html.RenderPartialAsync("_ValidationScriptsPartial");
 }
 }
 
@@ -63,5 +63,4 @@
         Swal.fire(
             '@ViewBag.Message días de vacaciones');
     </script>
-
 }
