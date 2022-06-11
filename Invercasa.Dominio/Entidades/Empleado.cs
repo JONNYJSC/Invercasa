@@ -17,5 +17,8 @@ namespace Invercasa.Dominio.Entidades
         public DateTime FechaIngreso { get; set; }
         public decimal SalarioBaseMensual { get; set; }
         public string Direccion { get; set; } = null!;
+
+        //Recibe el valor de la funcion FnValidarCedula (AccesoDatos)
+        public string ValidarNIdentidad = null!;
     }
 }
