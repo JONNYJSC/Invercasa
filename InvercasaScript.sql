@@ -1,6 +1,6 @@
 ﻿USE [master]
 GO
-/****** Object:  Database [dbInvercasa]    Script Date: 06/06/2022 01:07:49 a. m. ******/
+/****** Object:  Database [dbInvercasa]    Script Date: 10/06/2022 11:06:57 p. m. ******/
 CREATE DATABASE [dbInvercasa]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -82,7 +82,7 @@ ALTER DATABASE [dbInvercasa] SET QUERY_STORE = OFF
 GO
 USE [dbInvercasa]
 GO
-/****** Object:  UserDefinedFunction [dbo].[FnCalcularVacaciones]    Script Date: 06/06/2022 01:07:49 a. m. ******/
+/****** Object:  UserDefinedFunction [dbo].[FnCalcularVacaciones]    Script Date: 10/06/2022 11:06:57 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -104,7 +104,7 @@ BEGIN
 	RETURN @vacaciones;
 END;
 GO
-/****** Object:  UserDefinedFunction [dbo].[FnValidarCedula]    Script Date: 10/06/2022 10:35:31 p. m. ******/
+/****** Object:  UserDefinedFunction [dbo].[FnValidarCedula]    Script Date: 10/06/2022 11:06:57 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -135,7 +135,7 @@ BEGIN
     RETURN @Identidad;
 END;
 GO
-/****** Object:  Table [dbo].[Empleado]    Script Date: 06/06/2022 01:07:49 a. m. ******/
+/****** Object:  Table [dbo].[Empleado]    Script Date: 10/06/2022 11:06:57 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -151,14 +151,10 @@ CREATE TABLE [dbo].[Empleado](
  CONSTRAINT [PK_Empleado] PRIMARY KEY CLUSTERED 
 (
 	[IdEmpleado] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
- CONSTRAINT [unique_Identificacion] UNIQUE NONCLUSTERED 
-(
-	[NumeroIdentificacion] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Vacaciones]    Script Date: 06/06/2022 01:07:49 a. m. ******/
+/****** Object:  Table [dbo].[Vacaciones]    Script Date: 10/06/2022 11:06:57 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -179,7 +175,7 @@ REFERENCES [dbo].[Empleado] ([IdEmpleado])
 GO
 ALTER TABLE [dbo].[Vacaciones] CHECK CONSTRAINT [FK_Vacaciones_Empleado]
 GO
-/****** Object:  StoredProcedure [dbo].[SP_DEL_Eemplado]    Script Date: 06/06/2022 01:07:49 a. m. ******/
+/****** Object:  StoredProcedure [dbo].[SP_DEL_Eemplado]    Script Date: 10/06/2022 11:06:57 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -193,7 +189,7 @@ BEGIN
         WHERE IdEmpleado = @IdEmplado;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_DEL_Vacaciones]    Script Date: 06/06/2022 01:07:49 a. m. ******/
+/****** Object:  StoredProcedure [dbo].[SP_DEL_Vacaciones]    Script Date: 10/06/2022 11:06:57 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -207,7 +203,7 @@ BEGIN
         WHERE IdVaciones = @idVacaciones;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_INS_Empleado]    Script Date: 06/06/2022 01:07:49 a. m. ******/
+/****** Object:  StoredProcedure [dbo].[SP_INS_Empleado]    Script Date: 10/06/2022 11:06:57 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -243,7 +239,7 @@ BEGIN
         );
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_INS_Vacaciones]    Script Date: 06/06/2022 01:07:49 a. m. ******/
+/****** Object:  StoredProcedure [dbo].[SP_INS_Vacaciones]    Script Date: 10/06/2022 11:06:57 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -270,7 +266,7 @@ BEGIN
         );
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_ReporteVacaciones]    Script Date: 06/06/2022 01:07:49 a. m. ******/
+/****** Object:  StoredProcedure [dbo].[SP_ReporteVacaciones]    Script Date: 10/06/2022 11:06:57 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -293,7 +289,7 @@ LEFT JOIN (SELECT SUM(DATEDIFF(DAY, v.FechaInicio, v.FechaFin)) AS DiasTomados,
 WHERE e.IdEmpleado = @IdEmpleado
 END
 GO
-/****** Object:  StoredProcedure [dbo].[SP_SEL_Empleado]    Script Date: 06/06/2022 01:07:49 a. m. ******/
+/****** Object:  StoredProcedure [dbo].[SP_SEL_Empleado]    Script Date: 10/06/2022 11:06:57 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -312,7 +308,7 @@ BEGIN
         FROM dbo.Empleado e;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_SEL_Vacaciones]    Script Date: 06/06/2022 01:07:49 a. m. ******/
+/****** Object:  StoredProcedure [dbo].[SP_SEL_Vacaciones]    Script Date: 10/06/2022 11:06:57 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -332,7 +328,7 @@ BEGIN
         FROM dbo.Vacaciones v;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_UPD_Emplado]    Script Date: 06/06/2022 01:07:49 a. m. ******/
+/****** Object:  StoredProcedure [dbo].[SP_UPD_Emplado]    Script Date: 10/06/2022 11:06:57 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -360,7 +356,7 @@ BEGIN
     WHERE IdEmpleado = @IdEmplado;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[SP_UPD_Vacaciones]    Script Date: 06/06/2022 01:07:49 a. m. ******/
+/****** Object:  StoredProcedure [dbo].[SP_UPD_Vacaciones]    Script Date: 10/06/2022 11:06:57 p. m. ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
