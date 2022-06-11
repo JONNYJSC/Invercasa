@@ -15,6 +15,7 @@ namespace Invercasa.AccesoDatos.AccesoDatos
     {
         private readonly AdministradorConexiones conexion;
         private readonly SqlCommand comando = new SqlCommand();
+        private readonly SqlCommand comandoFn = new SqlCommand();
 
         public CrearEmpleado(AdministradorConexiones conexion)
         {
@@ -73,6 +74,35 @@ namespace Invercasa.AccesoDatos.AccesoDatos
 
             comando.ExecuteNonQuery();
             conexion.CerrarConexion();
+
+        }
+
+        public string ValidarCedula(string numeroIdentificacion)
+        {
+            string query = "SELECT dbo.FnValidarCedula(@NumeroIdentificacion);";
+
+            var parameters = new List<SqlParameter>()
+            {
+                new SqlParameter()
+                {
+                    ParameterName = "@NumeroIdentificacion",
+                    SqlDbType = SqlDbType.VarChar,
+                    Value = numeroIdentificacion
+                },
+            };
+
+            comandoFn.Connection = conexion.AbrirConexion();
+            comandoFn.CommandText = query;
+            comandoFn.Parameters.Clear();
+            comandoFn.Parameters.AddRange(parameters.ToArray());
+
+            string functionResult = (string)comandoFn.ExecuteScalar();
+
+            comandoFn.ExecuteNonQuery();
+
+            conexion.CerrarConexion();
+
+            return functionResult;
         }
     }
 }
