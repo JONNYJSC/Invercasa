@@ -5,6 +5,7 @@
 }
 
 <link href=~/css/CalendarioVacaciones.css rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 <h4>Crear Empleado</h4>
 <hr />
@@ -63,4 +64,12 @@
     @{
     await Html.RenderPartialAsync("_ValidationScriptsPartial");
 }
+}
+
+@if (ViewBag.Message != null)
+{
+    <script>
+        Swal.fire(
+            'El número de identificacion @ViewBag.Message ya existe!');
+    </script>
 }
