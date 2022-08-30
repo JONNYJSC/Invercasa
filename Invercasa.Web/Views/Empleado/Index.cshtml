@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Invercasa.Dominio.Entidades.Empleado>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h4>Lista de Empleado</h4>
+<link href=~/css/CalendarioVacaciones.css rel="stylesheet" type="text/css" />
+
+<div class="linea">
+    <p>
+        <a asp-action="CrearEmpleado" class="btn btn-success">Nuevo Empleado</a>
+    </p>
+    
+    <p>
+        <a asp-action="CalcularVacaciones" class="btn btn-primary">Calcular Vacaciones</a>
+    </p>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoIdentificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroIdentificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaIngreso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalarioBaseMensual)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+            @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.TipoIdentificacion)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.NumeroIdentificacion)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.FechaIngreso)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.SalarioBaseMensual)
+            </td>
+            <td>
+            @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+            @Html.ActionLink("Reporte", "Reporte", new {  id=item.Id  }, new { @class = "btn btn-outline-secondary" })
+            @Html.ActionLink("Vacaciones", "RegistrarVacaciones", new {  id=item.Id  }, new { @class = "btn btn-outline-secondary" })
+            </td>
+            </tr>
+            }
+    </tbody>
+</table>

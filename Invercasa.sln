@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Invercasa.Dominio", "Invercasa.Dominio\Invercasa.Dominio.csproj", "{0A5A2E1C-0DE7-4F88-86D1-5D7321D85649}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Invercasa.Servicios", "Invercasa.Servicios\Invercasa.Servicios.csproj", "{4714DD0D-31CE-49B9-BCCD-6472A847B946}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Invercasa.Web", "Invercasa.Web\Invercasa.Web.csproj", "{677FA746-1CB3-43DC-964D-CF6F8A0FEBB5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Invercasa.AccesoDatos", "Invercasa.AccesoDatos\Invercasa.AccesoDatos.csproj", "{26ECBA5C-56D7-47B6-8CD4-A155566997DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F29CAD48-F553-4E3E-A18F-B8467D26094C}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScriptBaseDatos", "ScriptBaseDatos", "{71F20799-09DD-402D-A3EF-A0F36864B6B8}"
+	ProjectSection(SolutionItems) = preProject
+		InvercasaScript.sql = InvercasaScript.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A5A2E1C-0DE7-4F88-86D1-5D7321D85649}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A5A2E1C-0DE7-4F88-86D1-5D7321D85649}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A5A2E1C-0DE7-4F88-86D1-5D7321D85649}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A5A2E1C-0DE7-4F88-86D1-5D7321D85649}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4714DD0D-31CE-49B9-BCCD-6472A847B946}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4714DD0D-31CE-49B9-BCCD-6472A847B946}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4714DD0D-31CE-49B9-BCCD-6472A847B946}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4714DD0D-31CE-49B9-BCCD-6472A847B946}.Release|Any CPU.Build.0 = Release|Any CPU
+		{677FA746-1CB3-43DC-964D-CF6F8A0FEBB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{677FA746-1CB3-43DC-964D-CF6F8A0FEBB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{677FA746-1CB3-43DC-964D-CF6F8A0FEBB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{677FA746-1CB3-43DC-964D-CF6F8A0FEBB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26ECBA5C-56D7-47B6-8CD4-A155566997DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26ECBA5C-56D7-47B6-8CD4-A155566997DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26ECBA5C-56D7-47B6-8CD4-A155566997DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26ECBA5C-56D7-47B6-8CD4-A155566997DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {80D717A6-A2C1-4A18-B012-6B892C8388F4}
+	EndGlobalSection
+EndGlobal

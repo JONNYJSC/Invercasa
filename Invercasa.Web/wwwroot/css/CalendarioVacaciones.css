@@ -1,0 +1,26 @@
+﻿.posision {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.calendario {
+    display: flex;
+    justify-content: space-around;
+}
+
+.boton {
+    display: flex;
+    justify-content: space-around;
+}
+
+.linea {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.centrar {
+    margin: 0 auto;
+}

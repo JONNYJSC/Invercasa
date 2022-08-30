@@ -1,0 +1,66 @@
+﻿@model Invercasa.Web.Models.DiasVacaciones
+
+@{
+    ViewData["Title"] = "CalcularVacaciones";
+}
+
+<link href=~/css/CalendarioVacaciones.css rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+<h4>Calcular Vacaciones</h4>
+
+<hr />
+
+<div class="posision">
+    <div>
+        <form asp-action="CalcularVacaciones">
+            <div class="d-flex justify-content-around">
+
+                <div class="form-group">
+                    <label asp-for="FechaInicio" class="control-label"></label>
+                    <input asp-for="FechaInicio" class="form-control" />
+                    <span asp-validation-for="FechaInicio" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FechaFin" class="control-label"></label>
+                    <input asp-for="FechaFin" class="form-control" />
+                    <span asp-validation-for="FechaFin" class="text-danger"></span>
+                </div>
+
+            </div>
+
+            <br />
+            <br />
+
+            <div class="d-flex justify-content-center">
+                <div class="form-group">
+                    <input type="submit" value="Calcular" class="btn btn-success" />
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<br />
+<br />
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">Volver a la lista</a>
+</div>
+
+
+@section Scripts {
+@{
+await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
+
+@if (ViewBag.Message != null)
+{
+    <script>
+        Swal.fire(
+            '@ViewBag.Message días de vacaciones');
+    </script>
+}

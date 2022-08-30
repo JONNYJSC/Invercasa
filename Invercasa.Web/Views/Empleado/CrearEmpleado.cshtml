@@ -1,0 +1,75 @@
+﻿@model Invercasa.Dominio.Entidades.Empleado
+
+@{
+    ViewData["Title"] = "CrearEmpleado";
+}
+
+<link href=~/css/CalendarioVacaciones.css rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+<h4>Crear Empleado</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4 centrar">
+        <form asp-action="CrearEmpleado">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoIdentificacion" class="control-label"></label>
+                <input asp-for="TipoIdentificacion" class="form-control" />
+                <span asp-validation-for="TipoIdentificacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumeroIdentificacion" class="control-label"></label>
+                <input asp-for="NumeroIdentificacion" class="form-control" />
+                <span asp-validation-for="NumeroIdentificacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaIngreso" class="control-label"></label>
+                <input asp-for="FechaIngreso" class="form-control" />
+                <span asp-validation-for="FechaIngreso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SalarioBaseMensual" class="control-label"></label>
+                <input asp-for="SalarioBaseMensual" class="form-control" />
+                <span asp-validation-for="SalarioBaseMensual" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Direccion" class="control-label"></label>
+                <input asp-for="Direccion" class="form-control" />
+                <span asp-validation-for="Direccion" class="text-danger"></span>
+            </div>
+            <hr />
+            <br />
+            <div class="d-flex justify-content-center">
+                <div>
+                    <input type="submit" value="Crear Empleado" class="btn btn-success" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<br />
+<br />
+<div>
+    <a asp-action="Index" class="btn btn-primary">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
+
+@if (ViewBag.Message != null)
+{
+    <script>
+        Swal.fire(
+            'El número de identificacion @ViewBag.Message ya existe!');
+    </script>
+}
